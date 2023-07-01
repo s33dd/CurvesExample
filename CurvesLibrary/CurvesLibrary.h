@@ -15,7 +15,7 @@
 #endif
 
 //Abstract class that contains declarations of neccessary functions for each type of curve
-class Shape {
+class CURVESLIBRARY_API Shape {
 public:
 	virtual std::vector<double> GetPoint(double t) = 0;
 	virtual std::vector<double> GetFirstDerivative(double t) = 0;
@@ -25,7 +25,7 @@ class Circle : public Shape {
 private:
 	double radius;
 public:
-	Circle(double radius);
+	CURVESLIBRARY_API Circle(double radius);
 	std::vector<double> GetPoint(double t) override;
 	std::vector<double> GetFirstDerivative(double t) override;
 };
@@ -35,7 +35,7 @@ private:
 	double xRadius;
 	double yRadius;
 public:
-	Ellipse(double xRadius, double yRadius);
+	CURVESLIBRARY_API Ellipse(double xRadius, double yRadius);
 	std::vector<double> GetPoint(double t) override;
 	std::vector<double> GetFirstDerivative(double t) override;
 };
@@ -45,7 +45,7 @@ private:
 	double step;
 	double radius;
 public:
-	Helix(double radius, double step);
+	CURVESLIBRARY_API Helix(double radius, double step);
 	std::vector<double> GetPoint(double t) override;
 	std::vector<double> GetFirstDerivative(double t) override;
 };
