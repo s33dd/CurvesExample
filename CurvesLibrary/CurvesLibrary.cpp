@@ -1,7 +1,11 @@
 #include "pch.h"
 #include <math.h>
+#include <string>
 
 Circle::Circle(double radius) {
+	if (radius < 0) {
+		throw std::string("Radius is negative");
+	}
 	this->radius = radius;
 }
 
@@ -22,6 +26,9 @@ std::vector<double> Circle::GetFirstDerivative(double t) {
 }
 
 Ellipse::Ellipse(double xRadius, double yRadius) {
+	if (xRadius < 0 or yRadius < 0) {
+		throw std::string("Some of radii of ellipse is negative");
+	}
 	this->xRadius = xRadius;
 	this->yRadius = yRadius;
 }
@@ -43,6 +50,9 @@ std::vector<double> Ellipse::GetFirstDerivative(double t) {
 }
 
 Helix::Helix(double radius, double step) {
+	if (radius < 0) {
+		throw std::string("Radius is negative");
+	}
 	this->radius = radius;
 	this->step = step;
 }
