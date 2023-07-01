@@ -53,6 +53,9 @@ Helix::Helix(double radius, double step) {
 	if (radius < 0) {
 		throw std::string("Radius is negative");
 	}
+	if (step < 0) {
+		throw std::string("Step is negative");
+	}
 	this->radius = radius;
 	this->step = step;
 }
