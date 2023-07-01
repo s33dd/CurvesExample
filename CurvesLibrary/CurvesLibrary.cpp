@@ -24,6 +24,9 @@ std::vector<double> Circle::GetFirstDerivative(double t) {
 	derivative.push_back(0); //Circle is planar so z = 0
 	return derivative;
 }
+double Circle::GetRadius() {
+	return radius;
+}
 
 Ellipse::Ellipse(double xRadius, double yRadius) {
 	if (xRadius < 0 or yRadius < 0) {

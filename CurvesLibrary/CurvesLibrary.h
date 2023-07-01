@@ -26,6 +26,7 @@ private:
 	double radius;
 public:
 	CURVESLIBRARY_API Circle(double radius);
+	double GetRadius();
 	std::vector<double> GetPoint(double t) override;
 	std::vector<double> GetFirstDerivative(double t) override;
 };
