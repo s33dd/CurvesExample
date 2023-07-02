@@ -6,6 +6,20 @@
 #include <cmath>
 #include <iomanip>
 
+/*
+* Function for sorting of vector with pointers of Circle.
+* @return
+* True if left circle`s radius is lover
+* than right circle`s radius.
+* False in other cases.
+* 
+* @param c1 - Pointer to left circle.
+* @param c2 - Pointer to right circle.
+*/
+bool Comp(Circle* c1, Circle* c2) {
+    return *c1 < *c2;
+}
+
 int main() {
     std::vector<std::unique_ptr<Shape>> randomShapes;
 
@@ -46,9 +60,19 @@ int main() {
             " Y: " << point[1] << " Z: " << point[2] << std::endl <<
             "Derivative at t = PI/4: <" << derivative[0] << " ," << derivative[1] <<
             " ," << derivative[2] << ">" << std::endl << std::endl;
+        //filling of the vector of circles
         Circle* circlePtr = nullptr;
         if ( circlePtr = dynamic_cast<Circle*>(randomShapes[i].get())) {
             circles.push_back(circlePtr);
         }
+    }
+
+    for (int i = 0; i < circles.size(); i++) {
+        std::cout << circles[i]->GetRadius() << std::endl;
+    }
+    std::sort(circles.begin(), circles.end(), Comp);
+    std::cout << std::endl;
+    for (int i = 0; i < circles.size(); i++) {
+        std::cout << circles[i]->GetRadius() << std::endl;
     }
 }
