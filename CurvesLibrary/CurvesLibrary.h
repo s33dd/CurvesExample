@@ -26,9 +26,13 @@ private:
 	double radius;
 public:
 	CURVESLIBRARY_API Circle(double radius);
-	double GetRadius();
+	CURVESLIBRARY_API double GetRadius();
 	std::vector<double> GetPoint(double t) override;
 	std::vector<double> GetFirstDerivative(double t) override;
+	CURVESLIBRARY_API bool operator < (Circle& object);
+	CURVESLIBRARY_API bool operator > (Circle& object);
+	CURVESLIBRARY_API bool operator != (Circle& object);
+	CURVESLIBRARY_API bool operator == (Circle& object);
 };
 
 class Ellipse : public Shape {

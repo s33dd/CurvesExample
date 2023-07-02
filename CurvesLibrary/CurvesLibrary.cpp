@@ -28,6 +28,19 @@ double Circle::GetRadius() {
 	return radius;
 }
 
+bool Circle::operator < (Circle& object) {
+	return radius < object.GetRadius();
+};
+bool Circle::operator > (Circle& object) {
+	return radius > object.GetRadius();
+};
+bool Circle::operator != (Circle& object) {
+	return radius != object.GetRadius();
+};
+bool Circle::operator == (Circle& object) {
+	return radius == object.GetRadius();
+};
+
 Ellipse::Ellipse(double xRadius, double yRadius) {
 	if (xRadius < 0 or yRadius < 0) {
 		throw std::string("Some of radii of ellipse is negative");
