@@ -5,6 +5,9 @@
 #include <random>
 #include <cmath>
 #include <iomanip>
+#include <omp.h>
+
+#define MAX_THREADS 4
 
 /*
 * Function for sorting of vector with pointers of Circle.
@@ -67,12 +70,19 @@ int main() {
         }
     }
 
-    for (int i = 0; i < circles.size(); i++) {
-        std::cout << circles[i]->GetRadius() << std::endl;
-    }
     std::sort(circles.begin(), circles.end(), Comp);
-    std::cout << std::endl;
-    for (int i = 0; i < circles.size(); i++) {
-        std::cout << circles[i]->GetRadius() << std::endl;
+    double sum = 0;
+
+    #pragma omp parallel num_threads(MAX_THREADS)
+    {
+        double threadSum = 0;
+        #pragma omp for
+        for (int i = 0; i < circles.size(); i++) {
+            threadSum += circles[i]->GetRadius();
+            #pragma omp atomic
+            sum += threadSum;
+        }
     }
+
+    std::cout << "Sum of radii in the vector of circles: " << sum << std::endl;
 }
